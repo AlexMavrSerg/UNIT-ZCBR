@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 
-rddm = 'https://xn--90acagbhgpca7c8c7f.xn--p1ai/news'
+rddm = 'https://будьвдвижении.рф/news'
 unarmy = 'https://yunarmy.ru/yunarmeyskielagerya/'
 
 page1 = requests.get(rddm)
@@ -14,10 +14,10 @@ filteredNews = []
 allNews = []
 
 soup1 = BeautifulSoup(page1.text, 'html.parser')
-#soup2 = BeautifulSoup(page2.text, 'html.parser')
+soup2 = BeautifulSoup(page2.text, 'html.parser')
 
-print(soup1)
-#print(soup2)
+#print(soup1)
+print(soup2)
 
 allNews = soup1.findAll('div', class_='news-page__container')
 
