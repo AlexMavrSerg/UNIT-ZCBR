@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 
 rddm = 'https://будьвдвижении.рф/news'
-unarmy = 'https://yunarmy.ru/yunarmeyskielagerya/'
+unarmy = 'https://yunarmy.ru/press-center/news/'
 
 page1 = requests.get(rddm)
 page2 = requests.get(unarmy)
@@ -17,15 +17,17 @@ soup1 = BeautifulSoup(page1.text, 'html.parser')
 soup2 = BeautifulSoup(page2.text, 'html.parser')
 
 #print(soup1)
-print(soup2)
+#print(soup2)
 
-allNews = soup1.findAll('div', class_='news-page__container')
+allNews = soup1.findAll('li', class_='news-card')
 
 for data in allNews:
-    if data.find('p', class_='news-card__text') is not None:
+    if data.find('div', class_='news-card__info') is not None:
         filteredNews.append(data.text)
 
 for data in filteredNews:
     print(data)
 
+
 print(filteredNews)
+
