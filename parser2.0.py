@@ -10,7 +10,7 @@ u = requests.get(unarmy)
 r = requests.get(rddm)
 #print(r.status_code)
 
-print(r.text)
+#print(r.text)
 
 #Парсинг определённого контента Web-страницы
 soup = bs(u.text, 'html.parser')
