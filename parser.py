@@ -16,7 +16,7 @@ allNews = []
 soup1 = BeautifulSoup(page1.text, 'html.parser')
 soup2 = BeautifulSoup(page2.text, 'html.parser')
 
-#print(soup1)
+print(soup1)
 print(soup2)
 
 allNews = soup1.findAll('div', class_='news-page__container')
