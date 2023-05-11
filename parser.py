@@ -1,33 +1,33 @@
-from bs4 import BeautifulSoup
+#Используемые модули
 import requests
+from bs4 import BeautifulSoup as bs
+import pandas as pd
 
-rddm = 'https://будьвдвижении.рф/news'
+#Соединение с сайтом
 unarmy = 'https://yunarmy.ru/press-center/news/'
+unarmy_n_award = 'https://yunarmy.ru/press-center/news/nagrazhdenie-nachalnika-shtaba-samarskoy-oblasti/'
+rddm = 'https://xn--90acagbhgpca7c8c7f.xn--p1ai/news'
+u = requests.get(unarmy)
+una = requests.get(unarmy_n_award)
+r = requests.get(rddm)
+#print(r.status_code)
 
-page1 = requests.get(rddm)
-page2 = requests.get(unarmy)
+#print(r.text)
 
-print(page1.status_code)
-print(page2.status_code)
-
-filteredNews = []
-allNews = []
-
-soup1 = BeautifulSoup(page1.text, 'html.parser')
-soup2 = BeautifulSoup(page2.text, 'html.parser')
-
-#print(soup1)
-#print(soup2)
-
-allNews = soup1.findAll('li', class_='news-card')
-
-for data in allNews:
-    if data.find('div', class_='news-card__info') is not None:
-        filteredNews.append(data.text)
-
-for data in filteredNews:
-    print(data)
-
-
-print(filteredNews)
-
+#Парсинг определённого контента Web-страницы
+soup = bs(u.text, "html.parser")
+news = soup.find_all('li', class_='news-card')
+for unarmy_news in news:
+    print(unarmy_news.h3)
+    print(unarmy_news.p)
+    print('https://yunarmy.ru'+unarmy_news.a['href'])
+    
+soup2 = bs(una.text, "html.parser")
+news_award_t = soup2.find_all('div', class_='news-inner')
+for unarmy_news_award_title in news_award_t:
+    print(unarmy_news_award_title.h1)
+    print(unarmy_news_award_title.img['src'])
+    print(unarmy_news_award_title.img['alt'])
+news_award_p = soup2.find_all('div', class_='news-inner__article-top')
+for unarmy_news_award_desc in news_award_p:
+    print(unarmy_news_award_desc.div)
