@@ -26,8 +26,6 @@ soup2 = bs(una.text, "html.parser")
 news_award_t = soup2.find_all('div', class_='news-inner')
 for unarmy_news_award_title in news_award_t:
     print(unarmy_news_award_title.h1)
-    print(unarmy_news_award_title.img['src'])
-    print(unarmy_news_award_title.img['alt'])
 news_award_p = soup2.find_all('div', class_='news-inner__article-top')
 for unarmy_news_award_desc in news_award_p:
     print(unarmy_news_award_desc.div)
