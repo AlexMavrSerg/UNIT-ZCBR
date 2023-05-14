@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup as bs
 
-r = requests.get('https://yandex.ru/pogoda/details/10-day-weather?lat=44.556975&lon=33.526404&via=ms', headers = {'User-Agent':'Mozilla/5.0'})
+r = requests.get('https://yandex.ru/pogoda/details/10-day-weather', headers = {'User-Agent':'Mozilla/5.0'})
 soup = bs(r.content, 'lxml')
 
 for card in soup.select('.card:not(.adv)'):
