@@ -73,5 +73,3 @@ def parser():
 
 
 parser()
-
-print('')
