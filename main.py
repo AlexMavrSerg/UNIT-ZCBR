@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import csv
 
-CSV = 'panos.csv'
+CSV = 'output.csv'
 
 option = Options()
 option.add_argument('--headless')
