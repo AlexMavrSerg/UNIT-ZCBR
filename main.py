@@ -11,7 +11,7 @@ option = Options()
 option.add_argument('--headless')
 
 url = 'https://xn--90acagbhgpca7c8c7f.xn--p1ai/news'
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(options=option)
 driver.get(url=url)
 driver.implicitly_wait(10)
 print('ПАРСЕР АКТИВИРОВАН!!!')
