@@ -6,7 +6,15 @@ from selenium.webdriver.support import expected_conditions as EC
 import csv
 
 CSV = 'output.csv'
+URL = 'https://xn--90acagbhgpca7c8c7f.xn--p1ai/news/'
+TEXT_CLASS = 'news-card__text'
+IMG_CLASS = 'news-card__img-container'
+DATE_CLASS = 'news-card__date'
+LINK_CLASS = 'news-card'
+BTN_NEXT_CLASS = 'btn-next'
 
+option = Options()
+option.add_argument('--headless')
 option = Options()
 option.add_argument('--headless')
 
@@ -23,22 +31,22 @@ def page_info():
 
 
 def get_news():
-    news = driver.find_elements(By.CLASS_NAME, 'news-card__text')
+    news = driver.find_elements(By.CLASS_NAME, TEXT_CLASS)
     return news
 
 
 def get_img():
-    img = driver.find_elements(By.CLASS_NAME, 'news-card__img-container')
+    img = driver.find_elements(By.CLASS_NAME, IMG_CLASS)
     return img
 
 
 def get_date():
-    date = driver.find_elements(By.CLASS_NAME, 'news-card__date')
+    date = driver.find_elements(By.CLASS_NAME, DATE_CLASS)
     return date
 
 
 def get_link():
-    link = driver.find_elements(By.CLASS_NAME, 'news-card')
+    link = driver.find_elements(By.CLASS_NAME, LINK_CLASS)
     return link
 
 
@@ -81,4 +89,5 @@ def parser():
     save_doc(card, CSV)
 
 
-parser()
+if __name__ == '__main__':
+    parser()
