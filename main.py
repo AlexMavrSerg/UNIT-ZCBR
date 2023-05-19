@@ -11,11 +11,15 @@ option = Options()
 option.add_argument('--headless')
 
 url = 'https://xn--90acagbhgpca7c8c7f.xn--p1ai/news'
-driver = webdriver.Chrome(options=option)
+driver = webdriver.Chrome()
 driver.get(url=url)
 driver.implicitly_wait(10)
 print('ПАРСЕР АКТИВИРОВАН!!!')
-a = input('Сколько страниц парсить? ')
+
+
+def page_info():
+    pages = driver.find_elements(By.CLASS_NAME, 'number')
+    return pages[4].text
 
 
 def get_news():
@@ -62,9 +66,14 @@ def get_content(news, img, date, link):
 
 def parser():
     card = []
-    for i in range(1, int(a) + 1):
-        print('Парсится страница:', i)
+    for i in range(1, int(page_info()) + 1):
+        print('Парсится стицраница:', i)
         card.extend(get_content(get_news(), get_img(), get_date(), get_link()))
+        if i == int(page_info()):
+            driver.close()
+            driver.quit()
+            print('Конец работы.')
+            break
         element = driver.find_element(By.CLASS_NAME, "btn-next")
         driver.execute_script("arguments[0].scrollIntoView();", element)
         driver.execute_script("arguments[0].click();", element)
