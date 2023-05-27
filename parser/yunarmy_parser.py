@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup as bs
 import pandas as pd
 import sys
 import json
+import string
 
 
 all_data = {}
@@ -46,6 +47,31 @@ def __parse_link(link):
     else:
         post["preview-image"] = None
     print("preview-image:", post["preview-image"])
+
+    post["content"] = {}
+
+    # date, location, age
+    project_inner_wrapper = page.find("div", attrs={"class":"project-inner__wrapper"})
+    info = project_inner_wrapper.find_all("h4")
+    names = ["date", "location", "age"]
+    for i in range(len(names)):
+        content = info[i].find("span")
+        content = content.find("span")
+        cnt = content.find("b")
+        if cnt is None:
+            post["content"][names[i]] = content.text
+        else:
+            post["content"][names[i]] = cnt.text
+        print(names[i] + ":", post["content"][names[i]])
+    
+    # description
+    all_paragraphs = project_inner_wrapper.find_all("p")
+    post["content"]["description"] = []
+    for paragraph in all_paragraphs:
+        post["content"]["description"].append(paragraph.text)
+    print("description:", post["content"]["description"])
+    
+
 
 
 if __name__ == "__main__":
