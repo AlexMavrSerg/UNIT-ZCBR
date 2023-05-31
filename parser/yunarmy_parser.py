@@ -47,6 +47,10 @@ def __parse_link(link):
         post["preview-image"] = None
     print("preview-image:", post["preview-image"])
 
+    # starting filling the content
+    # date
+    
+
 
 if __name__ == "__main__":
     URL_BASE = 'https://yunarmy.ru'
