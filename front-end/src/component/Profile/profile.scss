@@ -1,6 +1,86 @@
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+* {
+    margin: 0;
 }
+
+.profile {
+    &-sidebar {
+        background-color: rgb(219, 218, 218);
+        height: 100vh; 
+        width: 300px;
+        padding-left: 15px;
+    &__arrow {
+    padding-top: 200px;
+}
+        }
+    &-container {
+        display: grid; 
+        grid-template-columns: 0.1fr 2fr; 
+        grid-template-rows: 0.5fr; 
+        gap: 0em 0em; 
+        grid-template-areas: 
+          ". ."; 
+        width: 290px;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    &-stickers {
+        background-color: rgb(194, 194, 194);
+        width: 250px;
+        height: 70px;
+        margin-top: 15px;
+        border-radius: 15px;
+    }
+}
+
+span {
+    display: block;
+    margin-top:5px;
+    padding-top:5px;
+    }
+
+.client {
+display: flex;
+padding: 0;
+align-items: center;
+height: 150px;
+
+    &-icon {
+        width: 114px;
+        height: 145px;
+        background-color: rgb(194, 194, 194);
+        border-radius: 20px;
+        margin:0 15px 0 0;
+        left: 0;
+    }
+    &-name {
+        font-family: sans-serif;
+        letter-spacing: 1px;
+    }
+    &-birthday {
+        font-family: sans-serif;
+        letter-spacing: 1px;
+    }
+    &-id {
+        font-family: sans-serif;
+        letter-spacing: 1px;
+    }
+    &-supp {
+        font-family: sans-serif;
+        letter-spacing: 1px; 
+    }
+}
+
+.toggle-button {
+    width: 20px;
+    height: 100vh;
+    background-color: rgb(87, 86, 86);
+    
+}
+
+.open {
+display: none;
+}
+
+
+
