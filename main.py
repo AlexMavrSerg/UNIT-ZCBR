@@ -4,9 +4,9 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import re
-import csv
+import json
 
-CSV = 'output.csv'
+CSV = 'output.json'
 URL = 'https://xn--90acagbhgpca7c8c7f.xn--p1ai/news/'
 TEXT_CLASS = 'article__content-title'
 IMG_CLASS = 'article__content-img-container'
@@ -17,10 +17,10 @@ FULL_TEXT_CLASS = "//div[@class='article__content-body-content ck-content']"
 
 def get_driver(url):
     options = Options()
-    options.add_argument('--headless')
+    options.add_argument('--headles')
     driver = webdriver.Chrome(options=options)
     driver.get(url)
-    driver.implicitly_wait(5)
+    driver.implicitly_wait(10)
     print('ПАРСЕР АКТИВИРОВАН!!!')
     return driver
 
@@ -58,11 +58,17 @@ def get_link(driver):
 
 
 def save_doc(items, path):
-    with open(path, 'w', newline='', encoding='utf-8') as file:
-        writer = csv.writer(file, delimiter=';')
-        writer.writerow(['Описание', 'Дата', 'Изображение', 'Ссылка', 'Полный текст'])
+    with open(path, 'w', encoding='utf-8') as file:
+        data = []
         for item in items:
-            writer.writerow([item['title'], item['date'], item['image'], item['link'], item['full_txt']])
+            data.append({
+                'name': item['title'],
+                'date': item['date'],
+                'images': item['image'],
+                'link': item['link'],
+                'description': item['full_txt']
+            })
+        json.dump(data, file, ensure_ascii=False, indent=4)
 
 
 def get_content(news, img, date, full_txt, url):
@@ -82,7 +88,7 @@ def get_content(news, img, date, full_txt, url):
 def parser():
     card = []
     with get_driver(URL) as driver:
-        for page_num in range(int(page_info(driver)), 14, -1):
+        for page_num in range(int(page_info(driver)), 15, -1):
             url = f"{URL}{page_num}"
             driver.get(url)
             driver.implicitly_wait(2)
@@ -92,7 +98,7 @@ def parser():
                 print('Страница не найдена!', url)
                 continue
             else:
-                print('Парсаться страница:', url)
+                print('Парсится страница:', url)
                 card.extend(get_content(get_news(driver), get_img(driver), get_date(driver), get_full_txt(driver), url))
     save_doc(card, CSV)
 
