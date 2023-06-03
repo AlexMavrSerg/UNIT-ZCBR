@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import '../Profile/profile.scss';
-import sidebar from '../../UI-img/sidebar-arrow.svg';
+import sidebar from '../../UI-img/212.png';
 
 // const Profile = () => {
 //     const [profile, setProfile] = useState(false);
@@ -46,6 +46,7 @@ function ProfileSidebar() {
       </div>
 
       <div className="toggle-button" onClick={handleToggle}>
+
        <img src={sidebar} alt="" className='profile-sidebar__arrow'/>
        <img src={sidebar} alt="" className='profile-sidebar__arrow'/>
        <img src={sidebar} alt="" className='profile-sidebar__arrow'/>
