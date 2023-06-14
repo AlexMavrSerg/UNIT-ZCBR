@@ -1,7 +1,11 @@
 # UNIT-ZCBR
 ЮНИТ ЗЦБР
 
-##Модуль: DatabaseManaging
+## Модуль: DatabaseManaging
+
+### ВАЖНО:
+Модуль предназначен только для работы с таблицами формата (name | data), с другими таблицами работать не будет.
+
 Модуль имеет 3 класса:
 - DatabaseReader
 - DatabaseWriter
