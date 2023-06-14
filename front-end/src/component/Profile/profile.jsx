@@ -1,13 +1,6 @@
 import { useState } from 'react';
 import '../Profile/profile.scss';
-import sidebar from '../../UI-img/212.png';
-
-// const Profile = () => {
-//     const [profile, setProfile] = useState(false);
-//     const [client, setClient] = useState(false);
-//     const []
-
-// }
+import sidebar from '../../UI-img/sidebar-arrow.png';
 
 function ProfileSidebar() {
     const [isOpen, setIsOpen] = useState('');
@@ -39,18 +32,20 @@ function ProfileSidebar() {
 
 </div>
 
-<div className="profile-stickers"></div>
+<div className="profile__stickers"></div>
 
-<div className="profile-stickers"></div>
+<div className="profile__training"></div>
+
+<div className="profile__notification"></div>
 
       </div>
 
-      <div className="toggle-button" onClick={handleToggle}>
+      <button className="toggle-button" onClick={handleToggle}>
 
-       <img src={sidebar} alt="" className='profile-sidebar__arrow'/>
-       <img src={sidebar} alt="" className='profile-sidebar__arrow'/>
-       <img src={sidebar} alt="" className='profile-sidebar__arrow'/>
-        </div>
+       <img src={sidebar} alt="" className={`profile-sidebar__arrow ${isOpen ? 'arrowOff' : ''}`}/>
+       <img src={sidebar} alt="" className={`profile-sidebar__arrow ${isOpen ? 'arrowOff' : ''}`}/>
+       <img src={sidebar} alt="" className={`profile-sidebar__arrow ${isOpen ? 'arrowOff' : ''}`}/>
+        </button>
 
       </div>
     );

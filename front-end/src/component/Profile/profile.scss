@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    padding: 0;
 }
 
 .profile {
@@ -8,11 +9,13 @@
         height: 100vh; 
         width: 300px;
         padding-left: 15px;
+       
+       
     &__arrow {
     padding-top: 200px;
     width: 14px;
-
-  
+    justify-self: center;
+    
 }
         }
     &-container {
@@ -22,18 +25,39 @@
         gap: 0em 0em; 
         grid-template-areas: 
           ". ."; 
-        width: 290px;
-        position: absolute;
+        width: 310px;
+        position: fixed;
         left: 0;
         top: 0;
     }
-    &-stickers {
+    &__stickers {
         background-color: rgb(194, 194, 194);
         width: 250px;
         height: 70px;
         margin-top: 15px;
         border-radius: 15px;
     }
+
+    &__training {
+        background-color: rgb(194, 194, 194);
+        width: 250px;
+        height: 80px;
+        margin-top: 15px;
+        border-radius: 15px;
+    }
+
+    &__notification {
+        background-color: rgb(194, 194, 194);
+        width: 250px;
+        height: 147px;
+        margin-top: 15px;
+        border-radius: 15px;
+        
+    }
+}
+
+.arrowOff {
+    transform: scaleX(-1);
 }
 
 span {
@@ -77,14 +101,21 @@ height: 150px;
 .toggle-button {
     width: 20px;
     height: 100vh;
-    background-color: rgb(87, 86, 86);
+    background-color: rgb(194, 194, 194);
+    display: block;
+    transition: 0.2s;
+    border: none;
     
- 
 
+    &:hover {
+        background-color: rgb(141, 141, 141);
+        
+    }
 }
 
 .open {
 display: none;
+
 }
 
 

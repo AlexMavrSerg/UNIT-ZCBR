@@ -1,12 +1,15 @@
-import Form from "./component/Form/form";
+// import Form from "./component/Form/form";
 import ProfileSidebar from "./component/Profile/profile";
+import { Wrapper } from './component/Wrapper/wrapper'
+import { Pages } from './component/Pages/pages';
 
 function App() {
   return (
-    <div className="App">
-      <Form/>
+    <Wrapper className="App">
+      {/* <Form/> */}
       <ProfileSidebar/>
-    </div>
+      <Pages />
+    </Wrapper>
   );
 }
 
