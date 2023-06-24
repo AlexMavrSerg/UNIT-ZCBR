@@ -1,0 +1,59 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.form {
+    padding: 30px;
+    width: 200px;
+    background-color: rgb(209, 242, 245);
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgb(196, 166, 166);
+    font-family: sans-serif;
+    letter-spacing: 1px;
+
+
+    &_name {
+       font-size: 24px;
+    }
+    &_input,
+    &_label {
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    margin: 15px 0 15px 0;
+}
+
+    &_input {
+    width: 100%;
+    padding: 0 0 10px o;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background-color: transparent;
+    outline: none;
+} 
+
+&_btn {
+    background-color: azure;
+    border: none;
+    border-radius: 5px;
+    border-width: 1px;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: rgb(62, 173, 247);
+    padding: 10px;
+    margin-top: 10px;
+    transition: 0.5s;
+}
+
+&_btn:disabled {
+    background-color: red;
+}
+}
+
+
+ 

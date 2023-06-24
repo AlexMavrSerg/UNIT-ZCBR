@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+// import Form from "./component/Form/form";
+import ProfileSidebar from "./component/Profile/profile";
+import { Wrapper } from './component/Wrapper/wrapper'
+import { Pagination } from './component/Pagination/pagination';
+import { Post  } from './component/Post/post';
+import {
+  Route,
+  Routes,
+} from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Wrapper className="App">
+      {/* <Form/> */}
+      {/* <ProfileSidebar/> 
+      {/* <Pagination /> */}
+
+      <Routes>
+        <Route path="/" element={<Pagination/>} />
+        <Route path="/post/:id" element={<Post/>} />
+      </Routes>
+
+    </Wrapper>
+    
+  
+
+    </>
+    
   );
 }
 
