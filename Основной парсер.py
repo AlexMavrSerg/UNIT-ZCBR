@@ -62,6 +62,7 @@ def save_doc(items, path):
         data = []
         for item in items:
             data.append({
+                'id': item['id'],
                 'name': item['title'],
                 'date': item['date'],
                 'images': item['image'],
@@ -75,6 +76,7 @@ def get_content(news, img, date, full_txt, url):
     cards = []
     cards.append(
         {
+            'id': re.search(r'news/(\d+)', url).group(1),
             'title': news[0].text,
             'image': img[0].find_element(By.TAG_NAME, 'img').get_attribute('src'),
             'date': date[0].text,
