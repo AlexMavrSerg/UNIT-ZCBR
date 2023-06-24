@@ -20,8 +20,8 @@ for item in data:
     result = mycursor.fetchone()
 
     if not result:
-        sql = "INSERT INTO BVD_Parser (name, date, images, link, description) VALUES (%s, %s, %s, %s, %s)"
-        val = (item['name'], item['date'], item['images'], item['link'], item['description'])
+        sql = "INSERT INTO BVD_Parser (id, name, date, images, link, description) VALUES (%s, %s, %s, %s, %s, %s)"
+        val = (item['id'], item['name'], item['date'], item['images'], item['link'], item['description'])
         mycursor.execute(sql, val)
         mydb.commit()
 

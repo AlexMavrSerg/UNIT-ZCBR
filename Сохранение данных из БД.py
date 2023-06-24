@@ -18,11 +18,12 @@ results = mycursor.fetchall()
 data = []
 for result in results:
     data.append({
-        'name': result[0],
-        'date': result[1],
-        'images': result[2],
-        'link': result[3],
-        'description': result[4]
+        'id': results[0],
+        'name': result[1],
+        'date': result[2],
+        'images': result[3],
+        'link': result[4],
+        'description': result[5]
     })
 
 with open('from_db.json', 'w', encoding='utf-8') as f:
