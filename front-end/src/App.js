@@ -1,15 +1,32 @@
 // import Form from "./component/Form/form";
 import ProfileSidebar from "./component/Profile/profile";
 import { Wrapper } from './component/Wrapper/wrapper'
-import { Pages } from './component/Pages/pages';
+import { Pagination } from './component/Pagination/pagination';
+import { Post  } from './component/Post/post';
+import {
+  Route,
+  Routes,
+} from "react-router-dom";
 
 function App() {
   return (
+    <>
     <Wrapper className="App">
       {/* <Form/> */}
-      <ProfileSidebar/>
-      <Pages />
+      {/* <ProfileSidebar/> 
+      {/* <Pagination /> */}
+
+      <Routes>
+        <Route path="/" element={<Pagination/>} />
+        <Route path="/post/:id" element={<Post/>} />
+      </Routes>
+
     </Wrapper>
+    
+  
+
+    </>
+    
   );
 }
 

@@ -1,9 +1,12 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { useEffect } from 'react'
-import styles from './pages.module.scss';
+import { useEffect } from 'react';
+import styles from './pagination.module.scss';
+import {
+    Link,
+  } from "react-router-dom";
 
-export const Pages = () => {
+export const Pagination = () => {
 
     const [pages, setPages] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
@@ -13,7 +16,7 @@ export const Pages = () => {
     useEffect(() => {
         if (fetching) {
             console.log('fetching')
-            axios.get(`https://jsonplaceholder.typicode.com/photos?_limit=40&_page=${currentPage}`)
+            axios.get(`https://jsonplaceholder.typicode.com/photos?_limit=40&_page=${currentPage}`) 
             .then(response => {
                 setPages([...pages, ...response.data])
                 setCurrentPage(prevState => prevState + 1) 
@@ -44,8 +47,12 @@ export const Pages = () => {
 
 <div className={styles.container}>{pages.map(page => 
             <div className={styles.page} key={page.id}>
+                 <img src={page.thumbnailUrl} alt="" />
+
                 <div className='title'>{page.id}. {page.title}</div>
-                <img src={page.thumbnailUrl} alt="" />
+                   
+            <Link key={page.id} to={`/post/${page.id}`}> <li>Подробнее...</li></Link>
+                    
             </div>
             )}
         </div> 
