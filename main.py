@@ -2,13 +2,17 @@ import json
 import ftplib
 from json2html import *
 
-path = '/vita-dev.com/public_html'
-filename = 'output.json'
-ftp = ftplib.FTP("e97891sb.beget.tech")
-ftp.login("e97891sb_nayrest", "i4tpx70As!")
-ftp.cwd(path)
-ftp.retrbinary("RETR " + filename, open(filename, 'wb').write)
-ftp.quit()
+try:
+    path = '/vita-dev.com/public_html'
+    filename = 'output.json'
+    ftp = ftplib.FTP("e97891sb.beget.tech")
+    ftp.login("e97891sb_nayrest", "i4tpx70As!")
+    ftp.cwd(path)
+    ftp.retrbinary("RETR " + filename, open(filename, 'wb').write)
+    ftp.quit()
+except Exception:
+    print('No access to file')
+    exit()
 
 fp = open('index.html', 'x')
 
