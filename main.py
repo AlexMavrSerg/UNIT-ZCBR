@@ -10,6 +10,8 @@ ftp.cwd(path)
 ftp.retrbinary("RETR " + filename, open(filename, 'wb').write)
 ftp.quit()
 
+fp = open('index.html', 'x')
+
 with open("output.json", encoding="utf-8") as f:
     d = json.load(f)
     scanOutput = json2html.convert(json=d)
