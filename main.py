@@ -1,4 +1,5 @@
 import json
+import os
 import ftplib
 from json2html import *
 
@@ -23,3 +24,5 @@ with open("output.json", encoding="utf-8") as f:
     with open(htmlReportFile, 'w', encoding='utf-8') as htmlfile:
         htmlfile.write(str(scanOutput))
         print("Json file converted into html successfully.")
+
+os.remove('output.json')
