@@ -19,6 +19,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Pagination/>} />
         <Route path="/post/:id" element={<Post/>} />
+        <Route path="/post/post" element={<Post/>} />
+
       </Routes>
 
     </Wrapper>

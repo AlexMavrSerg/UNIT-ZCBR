@@ -2,10 +2,8 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import styles from './pagination.module.scss';
-import {
-    Link,
-  } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import errImg from "../../UI-img/page-not-found-1011853308-5b8f17d146e0fb005045416c.jpg";
 export const Pagination = () => {
 
     const [pages, setPages] = useState([])
@@ -16,13 +14,18 @@ export const Pagination = () => {
     useEffect(() => {
         if (fetching) {
             console.log('fetching')
-            axios.get(`https://jsonplaceholder.typicode.com/photos?_limit=40&_page=${currentPage}`) 
+            const getPosts = async ()  => {
+                // https://jsonplaceholder.typicode.com/photos ссылка для демонстрации работы пагинации и роутинга между постами на случай если сервер не будет готов
+                axios.get(`https://raw.githubusercontent.com/AlexMavrSerg/UNIT-ZCBR/BVD_Parser/output.json?_page=${currentPage}`) 
             .then(response => {
                 setPages([...pages, ...response.data])
                 setCurrentPage(prevState => prevState + 1) 
                 setTotalCount(response.headers['x-total-count']) 
             })
+            .catch(err => console.log("error:", err))
             .finally( () => setFetching(false));
+            }
+            getPosts()
     }
 }, [fetching])
 
@@ -47,11 +50,15 @@ export const Pagination = () => {
 
 <div className={styles.container}>{pages.map(page => 
             <div className={styles.page} key={page.id}>
-                 <img src={page.thumbnailUrl} alt="" />
-
-                <div className='title'>{page.id}. {page.title}</div>
+                 <img className={styles.image} src={page.images} alt={errImg} />
+                <h5>{page.date}</h5>
+                <div className='title'>
+                    <p>{page.name}</p>
+                </div>
                    
-            <Link key={page.id} to={`/post/${page.id}`}> <li>Подробнее...</li></Link>
+            <div className={styles.link}>
+            <Link key={page.id} to={`/post/${page.id}`}> <p className={styles.text}>Подробнее...</p></Link>
+            </div>
                     
             </div>
             )}

@@ -1,5 +1,15 @@
-@import-normalize;
+@font-face {
+    font-family: 'roboto-regular';
+    src: url(./fonts/Roboto-Regular.ttf);
+    font-weight: 900;
+}
 
 body {
     margin: 0;
+    font-family: 'roboto-regular';
+}
+
+a {
+    text-decoration: none;
+    text-decoration-color: black;
 }
